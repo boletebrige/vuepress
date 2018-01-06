@@ -7,7 +7,14 @@
 				</router-link>
 			</div>
 		</header>
-    <router-view/>
+    <main>
+			<router-view/>
+		</main>
+		<footer>
+			<div class="footer">
+				<span>GPL- 3.0</span>
+			</div>
+		</footer>
   </div>
 </template>
 

@@ -16,6 +16,11 @@
     &:first-child, &:nth-child(2) {
       width: 50%;
       height: 540px;
+
+      @media screen and (max-width: 800px) {
+        width: 100%;
+        height: 320px;
+      }
       a{
           .post-text {
             padding: 40px 60px;
@@ -26,6 +31,14 @@
             .post-info {
                 padding-top: 20px;
             }
+            
+            @media screen and (max-width: 800px) {
+              width: calc(100% - 60px);
+              padding: 20px 30px;
+              .post-title {
+                font-size: 32px;
+              }
+            }
           }
         }
     }
@@ -33,12 +46,21 @@
     &:nth-child(n + 3){
       width: calc(100% / 3);
       height: 360px;
+
+      @media screen and (max-width: 800px) {
+        width: 100%;
+        height: 320px;
+      }
       a{
           .post-text {
             padding: 20px 30px;
             .post-title {
                 font-size: 38px;
                 font-weight: 500;
+                @media screen and (max-width: 800px) {
+                  font-size: 32px;
+                  font-weight: 700;
+                }
             }
             .post-info {
                 padding-top: 10px;

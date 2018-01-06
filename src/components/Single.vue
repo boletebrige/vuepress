@@ -80,5 +80,9 @@ export default {
   img {
     max-width: 100%;
   }
+  a {
+    color: rgb(36, 41, 46);
+    font-weight: 300;
+  }
 }
 </style>

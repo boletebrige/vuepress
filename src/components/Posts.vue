@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="cf">
       <div  class="post-cover"
             v-for="post in posts" :key="post.id"
             v-if="post._embedded['wp:featuredmedia']"

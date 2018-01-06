@@ -18,4 +18,13 @@ npm run build
 
 - in Permalink Settings set permalinks to custom structure and use post id
 
+- header shadow
+
+- footer
+
+- valdi HTML5 elements
+
+- download font (roboto )
+
+
 
