@@ -77,5 +77,8 @@ export default {
   p {
     margin: 10px 0;
   }
+  img {
+    max-width: 100%;
+  }
 }
 </style>
