@@ -32,4 +32,8 @@ npm run build
 
 - back to home button on single
 
+- put host url in variable
+
+- don't load content if conetet is laoded logic
+
 
