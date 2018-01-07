@@ -1,32 +1,33 @@
 <template>
-    <div class="cf">
-      <div  class="post-cover"
-            v-for="post in posts" :key="post.id"
-            v-if="post._embedded['wp:featuredmedia']"
-            v-bind:style="{'background-image': 'url(\'' + post._embedded['wp:featuredmedia'][0].source_url + '\')'}">
-            <div class="post-text-container">
-              <router-link :to="{ name: 'Single', params: { id: post.id } }">
-                <div class="post-text">
-                  <div class="post-title">{{ post.title.rendered }}</div>
-                  <div class="post-info cf">
-                    <span class="post-date">
-                      {{ filter(post.date, 'D.M.YYYY, HH:MM') }}
-                    </span>
-                    <span class="reading-time">
-                      {{ post.readingTime.text }}
-                    </span>
+    <div>
+      <div class="cf" v-if="posts">
+        <div  class="post-cover"
+              v-for="post in posts" :key="post.id"
+              v-if="post._embedded['wp:featuredmedia']"
+              v-bind:style="{'background-image': 'url(\'' + post._embedded['wp:featuredmedia'][0].source_url + '\')'}">
+              <div class="post-text-container">
+                <router-link :to="{ name: 'Single', params: { id: post.id } }">
+                  <div class="post-text">
+                    <div class="post-title">{{ post.title.rendered }}</div>
+                    <div class="post-info cf">
+                      <span class="post-date">
+                        {{ filter(post.date, 'D.M.YYYY, HH:MM') }}
+                      </span>
+                      <span class="reading-time">
+                        {{ post.readingTime.text }}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </router-link>
-            </div>
-            <div class="overlay"></div>
+                </router-link>
+              </div>
+              <div class="overlay"></div>
+        </div>
       </div>
+      <div class="loader" v-if="!posts"></div>
     </div>
-    
 </template>
 <script>
 import readingTime from 'reading-time'
-import moment from 'moment'
 
 export default {
   name: 'Posts',
@@ -45,11 +46,6 @@ export default {
     }, response => {
       // error callback
     })
-  },
-  methods: {
-    filter (date, format) {
-      return moment(date).format(format)
-    }
   }
 }
 </script>

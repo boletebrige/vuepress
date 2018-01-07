@@ -18,13 +18,18 @@ npm run build
 
 - in Permalink Settings set permalinks to custom structure and use post id
 
-- header shadow
-
-- footer
-
 - valdi HTML5 elements
 
 - download font (roboto )
 
+- archive
+
+- comments commented in Single.vue =D
+
+- create comment comment
+
+- deafult image if post doesn't have image
+
+- back to home button on single
 
 
