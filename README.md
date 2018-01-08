@@ -2,6 +2,8 @@
 
 > A Vue.js project
 
+![Alt text](./screen.jpg?raw=true "Title")
+
 ## Build Setup
 
 ``` bash
@@ -12,21 +14,20 @@ npm install
 npm run dev
 
 # build for production with minification
-npm run build
+npm run build 
+```
 
-## Wordpress Setup
-
-- in Permalink Settings set permalinks to custom structure and use post id
+## TODO
 
 - valdi HTML5 elements
 
-- download font (roboto )
+- download font (roboto)
 
-- archive
+- archive page
 
 - comments commented in Single.vue =D
 
-- create comment comment
+- add create comment
 
 - deafult image if post doesn't have image
 
@@ -34,6 +35,6 @@ npm run build
 
 - put host url in variable
 
-- don't load content if conetet is laoded logic
+- fix hilarious IE bug
 
 
