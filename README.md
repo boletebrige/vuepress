@@ -19,24 +19,16 @@ npm run build
 
 ## TODO
 
-- valdi HTML5 elements
+- General
+    - valdi HTML5 elements
+    - download font (roboto)
+    - archive page
+    - put host url in variable
+    - fix hilarious IE bug
+    - deafult image if post doesn't have image
 
-- download font (roboto)
-
-- archive page
-
-- comments commented in Single.vue =D
-
-- add create comment
-
-- deafult image if post doesn't have image
-
-- back to home button on single
-
-- put host url in variable
-
-- fix hilarious IE bug
-
-- infinite scroll on posts list
-
-
+- Single post
+    - add comment
+    - display post comments
+    - back to home button
+    - loading on infinite scroll
