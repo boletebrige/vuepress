@@ -42,28 +42,33 @@ export default {
       rT: null
     }
   },
+  methods: {
+    getPost (postId) {
+      // get post by id this.$route.params.id
+      this.$http.get('http://localhost/wordpress//wp-json/wp/v2/posts/' + postId + '?_embed').then(
+        response => {
+          // get body data
+          this.post = response.body
+          this.rT = readingTime(this.post.content.rendered)
+        },
+        response => {
+          // error callback
+        }
+      )
+      // get comments by post id
+      this.$http.get('http://localhost/wordpress/wp-json/wp/v2/comments?post=' + postId).then(
+        response => {
+          // get body data
+          this.comments = response.body
+        },
+        response => {
+          // error callback
+        }
+      )
+    }
+  },
   mounted () {
-    // get post by id this.$route.params.id
-    this.$http.get('http://localhost/wordpress//wp-json/wp/v2/posts/' + this.$route.params.id + '?_embed').then(
-      response => {
-        // get body data
-        this.post = response.body
-        this.rT = readingTime(this.post.content.rendered)
-      },
-      response => {
-        // error callback
-      }
-    )
-    // get comments by psot id
-    this.$http.get('http://localhost/wordpress/wp-json/wp/v2/comments?post=' + this.$route.params.id).then(
-      response => {
-        // get body data
-        this.comments = response.body
-      },
-      response => {
-        // error callback
-      }
-    )
+    this.getPost(this.$route.params.id)
   }
 }
 </script>

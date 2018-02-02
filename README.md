@@ -37,4 +37,6 @@ npm run build
 
 - fix hilarious IE bug
 
+- infinite scroll on posts list
+
 

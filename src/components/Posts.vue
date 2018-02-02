@@ -36,16 +36,21 @@ export default {
       posts: null
     }
   },
-  mounted () {
-    this.$http.get('http://localhost/wordpress//wp-json/wp/v2/posts?_embed&per_page=14').then(response => {
-      this.posts = response.body
-      // inserting post reading time
-      this.posts.forEach(el => {
-        el.readingTime = readingTime(el.content.rendered)
+  methods: {
+    fetchData () {
+      this.$http.get('http://localhost/wordpress//wp-json/wp/v2/posts?_embed&per_page=14').then(response => {
+        this.posts = response.body
+        // inserting post reading time
+        this.posts.forEach(el => {
+          el.readingTime = readingTime(el.content.rendered)
+        })
+      }, response => {
+        // error callback
       })
-    }, response => {
-      // error callback
-    })
+    }
+  },
+  mounted () {
+    this.fetchData()
   }
 }
 </script>
