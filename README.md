@@ -20,15 +20,26 @@ npm run build
 ## TODO
 
 - General
-    - valdi HTML5 elements
-    - download font (roboto)
-    - archive page
-    - put host url in variable
-    - fix hilarious IE bug
-    - deafult image if post doesn't have image
+    - [] valdi HTML5 elements
+    - [] download font (roboto)
+    - [] archive page
+    - [] put host url in variable
+    - [] fix hilarious IE bug
+    - [] deafult image if post doesn't have image
 
 - Single post
-    - add comment
-    - display post comments
-    - back to home button
-    - loading on infinite scroll
+    - [] add comment
+    - [] display post comments
+    - [] back to home button
+    - [x] loading on infinite scroll
+    - [x] scroll to the top
+    - [] no more stories
+
+## Reminder
+- to allow naonymous comments add in functions.php
+``` bash
+    function filter_rest_allow_anonymous_comments() {
+        return true;
+    }
+    add_filter('rest_allow_anonymous_comments','filter_rest_allow_anonymous_comments');
+```

@@ -5,6 +5,17 @@ import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
 import moment from 'moment'
+import VueProgressBar from 'vue-progressbar'
+import VeeValidate from 'vee-validate'
+
+Vue.use(VeeValidate)
+
+Vue.use(VueProgressBar, {
+  color: '#002868',
+  failedColor: 'red',
+  height: '5px',
+  position: 'fixed'
+})
 
 Vue.use(VueResource)
 

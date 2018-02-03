@@ -10,6 +10,7 @@
     <main>
 			<router-view/>
 		</main>
+		<vue-progress-bar></vue-progress-bar>
 		<footer>
 			<div class="footer">
 				<span>GPL- 3.0</span>
