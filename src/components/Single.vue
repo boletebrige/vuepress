@@ -21,6 +21,22 @@
             <hr style="margin-top:40px">
           </div>
           <div class="comments-container">
+            <div v-if="comments[post.id]">
+              <div v-if="comments[post.id].length" class="cf">
+                <!-- <button class="comments-button" @click="displayCommnets(post.id)">Show comments ({{ comments[post.id].length }})</button> -->
+                  <div class="comment" v-for="(comment, index) in comments[post.id]" :key="index">
+                    <div class="title cf">
+                      <span>{{ comment.author_name}}</span>
+                      <span> {{ filter(comment.date, 'D.M.YYYY, HH:MM') }}</span>
+                    </div>
+                    <!-- ################### SECURITY ISSUE ################### -->
+                    <div class="comment-content" v-html="comment.content.rendered"></div>
+                  </div>
+              </div>
+            </div>
+            <div class="add-comment-title">
+              <h3>Write a reply:</h3>
+            </div>
             <form class="comment-form cf" @submit.prevent="addComment(post.id, index)" data-vv-scope="commentScope">
               <p class="input-container" :class="{ 'control': true }">
                 <input v-model="commentEmail[index]" v-validate="'required|email'" :class="{'input': true, 'is-danger': errors.has('commentScope.email' + index) }" :name="'email' + index" type="text" placeholder="Email">
@@ -57,7 +73,9 @@ export default {
       scrollTo: false,
       commentEmail: [],
       commentName: [],
-      commentContent: []
+      commentContent: [],
+      comments: [],
+      commentsShow: []
     }
   },
   methods: {
@@ -68,6 +86,22 @@ export default {
           // get body data
           response.body.rT = readingTime(response.body.content.rendered)
           this.posts.push(response.body)
+        },
+        response => {
+          // error callback
+        }
+      )
+    },
+    getPostComments (postId) {
+      // get comments by psot id
+      this.$http.get('http://localhost/wordpress/wp-json/wp/v2/comments?post=' + postId).then(
+        response => {
+          // get body data
+          // this.commentsShow[postId] = false
+          response.body.sort(function (a, b) {
+            return new Date(a.date) - new Date(b.date)
+          })
+          this.comments[postId] = response.body
         },
         response => {
           // error callback
@@ -98,6 +132,7 @@ export default {
         this.$Progress.start()
         // clear input fields
         const clear = async () => {
+          this.comments[id].push({author_name: this.commentName[index], content: {rendered: this.commentContent[index]}, date: new Date()})
           this.commentEmail.pop()
           this.commentName.pop()
           this.commentContent.pop()
@@ -110,6 +145,12 @@ export default {
         // error callback
         this.$Progress.fail()
       })
+    },
+    displayCommnets (id) {
+      // this.comments[id].showComments = !this.comments[id].showComments
+      // // console.log(this.comments[id][showComments])
+      // console.log(this.comments[id].showComments, this.comments)
+      console.log(id)
     }
   },
   watch: {
@@ -121,7 +162,10 @@ export default {
           // get id of next post
           if (tempPosts[tempPosts.map(e => e.id).indexOf(this.lastID) + 1]) {
             this.lastID = tempPosts[tempPosts.map(e => e.id).indexOf(this.lastID) + 1].id
+            // get post
             this.getPost(this.lastID)
+            // get post comments
+            this.getPostComments(this.lastID)
             this.$Progress.finish()
           } else {
             console.log('no more posts')
@@ -137,8 +181,8 @@ export default {
     // get post by id and store id as last loaded post
     this.lastID = Number(this.$route.params.id)
     this.getPost(this.lastID)
-    // get comments
-    // http://localhost/wordpress/wp-json/wp/v2/comments?post=59&author_name=John&author_email=josip.ravas.broj@gmail.com&content=blabla
+    // get post comments
+    this.getPostComments(this.lastID)
     // check if user scrolled to bottom of post to load next post
     window.addEventListener('scroll', () => {
       this.bottom = this.bottomVisible()
@@ -148,6 +192,7 @@ export default {
         this.scrollTo = false
       }
     })
+    console.log(this.comments)
   }
 }
 </script>

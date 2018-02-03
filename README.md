@@ -28,8 +28,9 @@ npm run build
     - [] deafult image if post doesn't have image
 
 - Single post
-    - [] add comment
-    - [] display post comments
+    - [x] add comment
+    - [] facebook comments
+    - [x] display post comments
     - [] back to home button
     - [x] loading on infinite scroll
     - [x] scroll to the top
