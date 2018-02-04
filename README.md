@@ -35,6 +35,7 @@ npm run build
     - [x] loading on infinite scroll
     - [x] scroll to the top
     - [] no more stories
+    - [] add progress bar for post reading position
 
 ## Reminder
 - to allow naonymous comments add in functions.php
