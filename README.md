@@ -20,12 +20,13 @@ npm run build
 ## TODO
 
 - General
-    - [] valdi HTML5 elements
+    - [ ] valdi HTML5 elements
     - [] download font (roboto)
     - [] archive page
     - [] put host url in variable
     - [] fix hilarious IE bug
     - [] deafult image if post doesn't have image
+    - [ ] 404 page
 
 - Single post
     - [x] add comment
@@ -38,7 +39,7 @@ npm run build
     - [] add progress bar for post reading position
 
 ## Reminder
-- to allow naonymous comments add in functions.php
+- to allow anonymous comments add in functions.php
 ``` bash
     function filter_rest_allow_anonymous_comments() {
         return true;
