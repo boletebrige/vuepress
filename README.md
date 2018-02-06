@@ -21,22 +21,22 @@ npm run build
 
 - General
     - [ ] valdi HTML5 elements
-    - [] download font (roboto)
-    - [] archive page
-    - [] put host url in variable
-    - [] fix hilarious IE bug
-    - [] deafult image if post doesn't have image
+    - [ ] download font (roboto)
+    - [ ] archive page
+    - [ ] put host url in variable
+    - [ ] fix hilarious IE bug
+    - [ ] deafult image if post doesn't have image
     - [ ] 404 page
 
 - Single post
     - [x] add comment
-    - [] facebook comments
+    - [ ] facebook comments
     - [x] display post comments
-    - [] back to home button
+    - [ ] back to home button
     - [x] loading on infinite scroll
     - [x] scroll to the top
-    - [] no more stories
-    - [] add progress bar for post reading position
+    - [ ] no more stories
+    - [ ] add progress bar for post reading position
 
 ## Reminder
 - to allow anonymous comments add in functions.php
