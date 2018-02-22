@@ -1,36 +1,18 @@
 <template>
     <div>
-      <div class="cf" v-if="posts">
-        <div  class="post-cover"
-              v-for="post in posts" :key="post.id"
-              v-if="post._embedded['wp:featuredmedia']"
-              v-bind:style="{'background-image': 'url(\'' + post._embedded['wp:featuredmedia'][0].source_url + '\')'}">
-              <div class="post-text-container">
-                <router-link :to="{ name: 'Single', params: { id: post.id } }">
-                  <div class="post-text">
-                    <div class="post-title">{{ post.title.rendered }}</div>
-                    <div class="post-info cf">
-                      <span class="post-date">
-                        {{ filter(post.date, 'D.M.YYYY, HH:MM') }}
-                      </span>
-                      <span class="reading-time">
-                        {{ post.readingTime.text }}
-                      </span>
-                    </div>
-                  </div>
-                </router-link>
-              </div>
-              <div class="overlay"></div>
-        </div>
-      </div>
+      <post :posts="posts"></post>
       <div class="loader" v-if="!posts"></div>
     </div>
 </template>
 <script>
+import Post from './Posts//Post.vue'
 import readingTime from 'reading-time'
 
 export default {
   name: 'Posts',
+  components: {
+    Post
+  },
   data () {
     return {
       posts: null

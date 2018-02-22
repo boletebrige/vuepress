@@ -38,6 +38,7 @@ npm run build
     - [ ] no more stories
     - [ ] add progress bar for post reading position
     - [ ] change url when reading another post loaded by infinite scroll
+    - [ ] comments date format
 
 ## Reminder
 - to allow anonymous comments add in functions.php
