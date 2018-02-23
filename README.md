@@ -21,12 +21,13 @@ npm run build
 
 - General
     - [ ] valdi HTML5 elements
-    - [ ] download font (roboto)
+    - [x] download font (roboto)
     - [ ] archive page
     - [ ] put host url in variable
     - [ ] fix hilarious IE bug
     - [ ] deafult image if post doesn't have image
     - [ ] 404 page
+    - [ ] favicon
 
 - Single post
     - [x] add comment

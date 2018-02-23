@@ -8,6 +8,7 @@ import moment from 'moment'
 import VueProgressBar from 'vue-progressbar'
 import VeeValidate from 'vee-validate'
 
+// validation
 Vue.use(VeeValidate)
 
 Vue.use(VueProgressBar, {

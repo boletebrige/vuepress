@@ -54,9 +54,6 @@ export default {
         this.$Progress.fail()
       })
     }
-  },
-  mounted () {
-    console.log(this.comments)
   }
 }
 </script>
