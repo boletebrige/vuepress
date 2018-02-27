@@ -7,6 +7,7 @@
           <comment-form :post="post" :index="index" :comments="comments[index]"></comment-form>
         </div>
       </div>
+      <div v-if="noMore" class="no-more-stories">No more stories :(</div>
       <div class="top" v-if="scrollTo" @click="toTop()"><span class="fi flaticon-arrows"></span></div>
       <div class="loader" v-if="!posts.length"></div>
     </div>
@@ -29,6 +30,7 @@ export default {
     return {
       posts: [],
       rT: null,
+      noMore: false,
       bottom: false,
       lastID: null,
       scrollTo: false,
@@ -116,6 +118,7 @@ export default {
             this.$Progress.finish()
           } else {
             console.log('no more posts')
+            this.noMore = true
           }
         }, response => {
           // error callback
@@ -136,8 +139,6 @@ export default {
       if (window.scrollY > 300) {
         this.scrollTo = true
         // change url when post changes
-        // too much calls
-        console.log(this.getCurrentPostId())
         this.$router.push({ path: '/post/' + this.getCurrentPostId() })
       } else {
         this.scrollTo = false

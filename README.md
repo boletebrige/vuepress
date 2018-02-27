@@ -42,6 +42,7 @@ npm run build
     - [ ] comments date format
 
 ## Reminder
+- uncomment history mode in ./src/router/index.js
 - to allow anonymous comments add in functions.php
 ``` bash
     function filter_rest_allow_anonymous_comments() {
