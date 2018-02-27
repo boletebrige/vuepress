@@ -75,13 +75,28 @@ export default {
     },
     toTop () {
       // scroll to the top of current post
+      // console.log(this.currentPost())
+      window.scrollBy(0, (this.currentPost()))
+    },
+    currentPost () {
       var postIds = this.posts.map(e => document.getElementById(e.id).getBoundingClientRect().y)
       var el = postIds.filter(el => {
         if (el < 0) {
           return el
         }
       })
-      window.scrollBy(0, (Math.max(...el)))
+      return Math.max(...el)
+    },
+    getCurrentPostId () {
+      // this.$router.push({ path: '/post/58' })
+      var that = this
+      var id = this.posts.filter(function (el) {
+        if (that.currentPost() === document.getElementById(el.id).getBoundingClientRect().y) {
+          return el.id
+        }
+      })
+      // reconsider
+      return id[0].id
     }
   },
   watch: {
@@ -120,6 +135,10 @@ export default {
       this.bottom = this.bottomVisible()
       if (window.scrollY > 300) {
         this.scrollTo = true
+        // change url when post changes
+        // too much calls
+        console.log(this.getCurrentPostId())
+        this.$router.push({ path: '/post/' + this.getCurrentPostId() })
       } else {
         this.scrollTo = false
       }
